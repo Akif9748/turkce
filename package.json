@@ -1,0 +1,30 @@
+{
+  "name": "turkce",
+  "version": "1.0.2",
+  "description": "Nesne-yönelimli, en kusursuz kolay TDK api modülü",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akif9748/node-turkce.git"
+  },
+  "keywords": [
+    "türkçe",
+    "turkce",
+    "sozluk",
+    "sozluk-api",
+    "tdk",
+    "tdk-api"
+  ],
+  "author": "Akif9748",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Akif9748/node-turkce/issues"
+  },
+  "homepage": "https://github.com/Akif9748/node-turkce#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  }
+}
