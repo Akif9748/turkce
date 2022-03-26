@@ -1,6 +1,6 @@
 {
   "name": "turkce",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Nesne-yönelimli, en kusursuz kolay TDK api modülü",
   "main": "index.js",
   "scripts": {
