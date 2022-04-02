@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Akif9748/node-turkce.git"
+    "url": "git+https://github.com/Akif9748/turkce.git"
   },
   "keywords": [
     "türkçe",
@@ -21,9 +21,9 @@
   "author": "Akif9748",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Akif9748/node-turkce/issues"
+    "url": "https://github.com/Akif9748/turkce/issues"
   },
-  "homepage": "https://github.com/Akif9748/node-turkce#readme",
+  "homepage": "https://github.com/Akif9748/turkce#readme",
   "dependencies": {
     "node-fetch": "^2.6.7"
   },
