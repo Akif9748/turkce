@@ -6,10 +6,12 @@
   "scripts": {
     "test": "node test"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Akif9748/turkce.git"
-  },
+  }, 
+  "types": "index.d.ts",
   "keywords": [
     "türkçe",
     "turkce",

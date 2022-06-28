@@ -12,31 +12,35 @@ npm i turkce
 
 ## Örnek kullanım
 ```js
-const turkce = require(".");
+const turkce = require("turkce");
 
+// then
+turkce("kelime").then(console.log).catch(console.error);
+
+// async / await
 (async () => {
-    try {
-        const sonuc = await turkce("kelime");
-        console.log(sonuc);
-    } catch (e) {
-        console.error(e);
-    }
+  try {
+    const sonuc = await turkce("kelime");
+    console.log(sonuc);
+  } catch (e) {
+    console.error(e);
+  }
 
 })();
 
 /*
-Cikti {
+{
   kelime: 'kelime',
   anlam: 'Anlamlı ses veya ses birliği, söz, sözcük, lügat',
   lisan: 'Arapça kelime',
-  ornek: Ornek {
+  ornek: {
     ornek: 'Tayyare kelimesine alışan millet, uçak kelimesine de alışır.',
     yazar: 'Orhan Veli Kanık'
   },
   atasozu: 'kelimeleri tartarak konuşmak',
   anlamlar: [ 'Anlamlı ses veya ses birliği, söz, sözcük, lügat' ],
   ornekler: [
-    Ornek {
+    {
       ornek: 'Tayyare kelimesine alışan millet, uçak kelimesine de alışır.',
       yazar: 'Orhan Veli Kanık'
     }
