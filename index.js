@@ -1,4 +1,4 @@
-const fetch = require("node-fetch")
+const fetch = global.fetch || require("node-fetch");
 
 /**
  * Nesne yönelimli, en kusursuz kolay TDK api modülü.
