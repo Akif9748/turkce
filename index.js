@@ -24,7 +24,7 @@ module.exports = async kelime => {
         const { anlamlarListe, atasozu, lisan = null } = sonuc;
 
         const anlamlar = anlamlarListe?.map(anlam => anlam.anlam) || [];
-        const ornekler = anlamlarListe[0]?.orneklerListe?.map(ornek => ({ ornek: ornek?.ornek || null, yazar: ornek?.yazar[0]?.tam_adi || null })) || [];
+        const ornekler = anlamlarListe?.[0]?.orneklerListe?.map(ornek => ({ ornek: ornek?.ornek || null, yazar: ornek?.yazar[0]?.tam_adi || null })) || [];
         const atasozleri = atasozu?.map(atasozu => atasozu?.madde) || [];
         return {
             kelime: sonuc.madde,
