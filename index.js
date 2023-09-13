@@ -22,10 +22,10 @@ module.exports = async (kelime, ua = "Mozilla/5.0 (compatible; Googlebot/2.1; +h
     return {
         kelime: sonuc.madde,
         lisan: sonuc.lisan,
-        anlamlar: sonuc.anlamlarListe?.map(anlam => anlam.anlam) || [],
-        ornekler: sonuc.anlamlarListe?.map(anlam => anlam.orneklerListe).flat()
-            .map(ornek => ({ ornek: ornek?.ornek, yazar: ornek.yazar?.[0]?.tam_adi })) || [],
-        atasozleri: sonuc.atasozu?.map(atasozu => atasozu.madde) || [],
+        anlamlar: sonuc.anlamlarListe?.map(anlam => anlam?.anlam).filter(Boolean) || [],
+        ornekler: sonuc.anlamlarListe?.map(anlam => anlam?.orneklerListe).flat().filter(Boolean)
+            .map(ornek => ({ ornek: ornek?.ornek, yazar: ornek?.yazar?.[0]?.tam_adi })) || [],
+        atasozleri: sonuc.atasozu?.map(atasozu => atasozu?.madde).filter(Boolean) || [],
         raw
     }
 
