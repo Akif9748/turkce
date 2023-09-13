@@ -1,14 +1,11 @@
 # turkce
-Nesne-yönelimli, en kusursuz kolay TDK api modülü.
+Kolay TDK api modülü.
 
 ### Avantajları:
 - Diğer modüller gibi `node-fetch` hatası yok.
-- Nesne yönelimli.
 
 ## Kurulum
-```sh
-npm i turkce
-```
+[![NPM](https://nodei.co/npm/turkce.png)](https://npmjs.org/package/turkce)
 
 ## Örnek kullanım
 ```js
@@ -31,27 +28,30 @@ turkce("kelime").then(console.log).catch(console.error);
 /*
 {
   kelime: 'kelime',
-  anlam: 'Anlamlı ses veya ses birliği, söz, sözcük, lügat',
   lisan: 'Arapça kelime',
-  ornek: {
-    ornek: 'Tayyare kelimesine alışan millet, uçak kelimesine de alışır.',
-    yazar: 'Orhan Veli Kanık'
-  },
-  atasozu: 'kelimeleri tartarak konuşmak',
-  anlamlar: [ 'Anlamlı ses veya ses birliği, söz, sözcük, lügat' ],
+  anlamlar: [
+    'Bir veya birkaç heceden oluşan, anlamı ses birliği; söz, sözcük, lügat'
+  ],
   ornekler: [
     {
       ornek: 'Tayyare kelimesine alışan millet, uçak kelimesine de alışır.',
       yazar: 'Orhan Veli Kanık'
     }
   ],
-  atasozleri: [ 'kelimeleri tartarak konuşmak', 'kelimenin tam anlamıyla' ]
+  atasozleri: [ 'kelimeleri tartarak konuşmak', 'kelimenin tam anlamıyla' ],
+  raw: [{
+    madde_id: '43528',
+    kac: '0',
+    kelime_no: '29158',
+    ... direkt çıktılar
+  }]
 }*/
 ```
+## API:
+### turkce(kelime, useragent?)
+- Useragent varsayılan olarak GoogleBot'dur.
 
-
-# Yapımcı
+## Yapımcı
 * [GitHub](https://github.com/Akif9748) 
 * [NPM](https://www.npmjs.com/~akif9748)
-* [Discord](https://discord.com/users/539506680140922890) | Akif#7304
-
+* [Discord](https://discord.com/users/539506680140922890) | akif9748

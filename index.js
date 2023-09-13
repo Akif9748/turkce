@@ -4,42 +4,29 @@ const fetch = global.fetch || require("node-fetch");
  * Nesne yönelimli, en kusursuz kolay TDK api modülü.
  * @async
  * @param {String} kelime TDK'de aranacak kelime
+ * @param {String} [ua] Custom User-Agent
  * @returns {Promise<Object>} Çıktı varsa Çıktı döndürür
  */
 
-module.exports = async kelime => {
+module.exports = async (kelime, ua = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)") => {
+    if (!kelime || typeof kelime !== "string") throw TypeError("Kelime parametresi boş geçilemez.");
 
-    if (!kelime) throw TypeError("Kelime parametresi boş geçilemez.");
+    const raw = await fetch("https://sozluk.gov.tr/gts?ara=" + encodeURI(kelime.toLocaleLowerCase("tr")), {
+        headers: { "User-Agent": ua }
+    }).then(res => res.json());
 
-    try {
-        const response = await fetch("https://sozluk.gov.tr/gts?ara=" + encodeURI(kelime.toLocaleLowerCase("tr")), {
-            headers: { "User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" }
-        }).then(res => res.json());
+    if (raw.error) return null;
+    const [sonuc] = raw;
+    if (!sonuc) return null;
 
-        if (response.error) return null;
-
-        const [sonuc] = response;
-
-        if (!sonuc) return null;
-        const { anlamlarListe, atasozu, lisan = null } = sonuc;
-
-        const anlamlar = anlamlarListe?.map(anlam => anlam.anlam) || [];
-        const ornekler = anlamlarListe?.[0]?.orneklerListe?.map(ornek => ({ ornek: ornek?.ornek || null, yazar: ornek?.yazar[0]?.tam_adi || null })) || [];
-        const atasozleri = atasozu?.map(atasozu => atasozu?.madde) || [];
-        return {
-            kelime: sonuc.madde,
-            anlam: anlamlar[0],
-            lisan,
-            ornek: ornekler[0] || null,
-            atasozu: atasozleri[0] || null,
-            anlamlar,
-            ornekler,
-            atasozleri
-        }
-
-    } catch (e) {
-        return e;
+    return {
+        kelime: sonuc.madde,
+        lisan: sonuc.lisan,
+        anlamlar: sonuc.anlamlarListe?.map(anlam => anlam.anlam) || [],
+        ornekler: sonuc.anlamlarListe?.map(anlam => anlam.orneklerListe).flat()
+            .map(ornek => ({ ornek: ornek?.ornek, yazar: ornek.yazar?.[0]?.tam_adi })) || [],
+        atasozleri: sonuc.atasozu?.map(atasozu => atasozu.madde) || [],
+        raw
     }
-
 
 }

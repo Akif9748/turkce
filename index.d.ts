@@ -19,4 +19,4 @@ interface Cikti {
  * @param {String} kelime Aranacak kelime
  * @returns {Cikti} Sonuç
  */
-export default async function (kelime: string): Promise<Cikti>;
+export default function (kelime: string): Promise<Cikti>;

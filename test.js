@@ -1,10 +1,9 @@
 const turkce = require(".");
+const test = require('node:test');
+const assert = require("node:assert");
 
-(async () => {
-    try {
-        const sonuc = await turkce("kelime");
-        console.log(sonuc);
-    } catch (e) {
-        console.error(e);
-    }
-})();
+test("kelime", async () => {
+    const sonuc = await turkce("kelime");
+    assert.strictEqual(sonuc.kelime, "kelime");
+    assert(sonuc.raw);
+});
